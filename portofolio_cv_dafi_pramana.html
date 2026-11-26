@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dafi Pramana — Programmer & Teknik Komputer Jaringan</title>
+    <meta name="description" content="Portofolio dan Curriculum Vitae profesional Dafi Pramana - Alumni SMK Negeri Ihya Ulumuddin Singojuruh, Keahlian Teknik Komputer Jaringan & Tujuan Karir Programmer.">
+    
+    <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons via CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 0.9s infinite;
+            color: #22d3ee;
+            margin-left: 2px;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .profile-glow {
+            box-shadow: 0 0 45px -10px rgba(99, 102, 241, 0.45), 0 0 25px -5px rgba(34, 211, 238, 0.35);
+        }
+        @media print {
+            header, footer, #portofolio, #kontak, .no-print {
+                display: none !important;
+            }
+            body {
+                background: #ffffff !important;
+                color: #0f172a !important;
+            }
+            section {
+                padding-top: 1.25rem !important;
+                padding-bottom: 1.25rem !important;
+            }
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-300">
+
+    <!-- =====================================================================
+         1. HEADER & NAVIGASI RESPONSIF
+         ===================================================================== -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <!-- Logo / Nama Brand -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center text-white font-heading font-extrabold text-lg shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform">
+                    DP
+                </div>
+                <div>
+                    <span class="font-heading font-bold text-base sm:text-lg tracking-tight block text-slate-900 dark:text-white">Dafi Pramana</span>
+                    <span class="font-mono text-[11px] text-indigo-600 dark:text-cyan-400 block -mt-1">Programmer & TKJ</span>
+                </div>
+            </a>
+
+            <!-- Menu Navigasi Desktop -->
+            <nav class="hidden md:flex items-center gap-1 font-medium text-sm">
+                <a href="#beranda" class="px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Beranda</a>
+                <a href="#tentang" class="px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Tentang</a>
+                <a href="#pendidikan" class="px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Pendidikan</a>
+                <a href="#keahlian" class="px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Keahlian</a>
+                <a href="#portofolio" class="px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Portofolio</a>
+                <a href="#kontak" class="px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Kontak</a>
+            </nav>
+
+            <!-- Aksi Kanan (Theme Toggle & Menu Mobile) -->
+            <div class="flex items-center gap-2">
+                <button id="theme-toggle" aria-label="Ganti Tema" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:scale-105 transition-all">
+                    <i id="sun-icon" data-lucide="sun" class="w-4 h-4 hidden text-amber-400"></i>
+                    <i id="moon-icon" data-lucide="moon" class="w-4 h-4 text-indigo-500"></i>
+                </button>
+
+                <!-- Tombol Menu Mobile -->
+                <button id="mobile-menu-btn" aria-label="Menu Utama" class="md:hidden w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300">
+                    <i id="menu-open-icon" data-lucide="menu" class="w-5 h-5"></i>
+                    <i id="menu-close-icon" data-lucide="x" class="w-5 h-5 hidden"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dropdown Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 dark:bg-slate-950/95 border-b border-slate-200 dark:border-slate-800 px-4 py-5 space-y-2 backdrop-blur-md">
+            <a href="#beranda" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Beranda</a>
+            <a href="#tentang" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Tentang & Tujuan Karir</a>
+            <a href="#pendidikan" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Riwayat Pendidikan</a>
+            <a href="#keahlian" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Keahlian & Teknologi</a>
+            <a href="#portofolio" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Portofolio Proyek</a>
+            <a href="#kontak" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Kontak Saya</a>
+        </div>
+    </header>
+
+    <main class="pt-24 sm:pt-28">
+        <!-- =====================================================================
+             2. HERO SECTION
+             ===================================================================== -->
+        <section id="beranda" class="py-12 sm:py-20 relative overflow-hidden">
+            <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-indigo-500/15 via-cyan-500/15 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Kolom Foto Profil (Terintegrasi Vektor Potret Asli Berkemeja Kotak-Kotak & Opsi Upload Preview) -->
+                    <div class="lg:col-span-5 flex flex-col items-center lg:items-end order-1 lg:order-2">
+                        <div class="relative group">
+                            <!-- Bingkai Gradasi Cahaya -->
+                            <div class="absolute -inset-1.5 bg-gradient-to-tr from-indigo-500 via-cyan-400 to-sky-500 rounded-3xl blur opacity-60 group-hover:opacity-90 transition duration-500"></div>
+                            
+                            <!-- Container Gambar -->
+                            <div class="relative w-64 h-72 sm:w-72 sm:h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden bg-sky-700 border-2 border-white/80 dark:border-slate-800 profile-glow">
+                                <!-- Input File Tersembunyi untuk Ganti Foto Interaktif -->
+                                <input type="file" id="photo-upload-input" accept="image/*" class="hidden">
+
+                                <!-- Gambar Utama (Menampilkan Ilustrasi Vektor Potret Berkemeja Kotak-Kotak Biru-Putih yang Dijamin Tampil Tanpa Error) -->
+                                <img 
+                                    id="profile-photo-img"
+                                    src="data:image/svg+xml;utf8,<svg viewBox='0 0 320 384' xmlns='http://www.w3.org/2000/svg'><defs><linearGradient id='bg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%236fa3d8'/><stop offset='50%' stop-color='%235388be'/><stop offset='100%' stop-color='%233c6ea3'/></linearGradient><linearGradient id='skin' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23e3a77b'/><stop offset='100%' stop-color='%23b87549'/></linearGradient><pattern id='plaid' width='16' height='16' patternUnits='userSpaceOnUse' patternTransform='rotate(-12)'><rect width='16' height='16' fill='%23eef4fb'/><rect width='16' height='2.2' fill='%234f6db8' fill-opacity='0.75'/><rect width='2.2' height='16' fill='%234f6db8' fill-opacity='0.75'/></pattern><linearGradient id='hair' x1='0%' y1='0%' x2='0%' y2='100%'><stop offset='0%' stop-color='%2327201c'/><stop offset='100%' stop-color='%23110d0b'/></linearGradient></defs><rect width='320' height='384' fill='url(%23bg)'/><path d='M112 238 L160 278 L208 238 L195 225 L125 225 Z' fill='%23ea580c'/><path d='M126 205 L194 205 L198 258 L122 258 Z' fill='url(%23skin)'/><path d='M22 384 C26 302, 66 254, 118 242 L160 282 L202 242 C254 254, 294 302, 298 384 Z' fill='url(%23plaid)' stroke='%23cbd5e1' stroke-width='1'/><path d='M160 282 L160 384' stroke='%2394a3b8' stroke-width='1.5'/><circle cx='154' cy='316' r='3.5' fill='%23f8fafc' stroke='%2394a3b8' stroke-width='1'/><circle cx='154' cy='356' r='3.5' fill='%23f8fafc' stroke='%2394a3b8' stroke-width='1'/><path d='M116 234 L94 256 L138 274 L158 278 L128 238 Z' fill='url(%23plaid)' stroke='%2394a3b8' stroke-width='1'/><path d='M204 234 L226 256 L182 274 L162 278 L192 238 Z' fill='url(%23plaid)' stroke='%2394a3b8' stroke-width='1'/><ellipse cx='226' cy='162' rx='14' ry='22' transform='rotate(10 226 162)' fill='url(%23skin)' stroke='%23b87549' stroke-width='1'/><path d='M94 128 C94 82, 224 82, 224 134 C224 186, 200 226, 156 228 C114 228, 94 186, 94 128 Z' fill='url(%23skin)'/><path d='M92 142 C88 104, 96 68, 122 50 L132 34 L142 46 L154 28 L164 46 L178 36 L184 52 C212 66, 226 98, 224 142 C218 118, 206 106, 194 104 C166 100, 124 102, 102 114 C96 122, 94 132, 92 142 Z' fill='url(%23hair)'/><path d='M104 136 Q124 132 140 142' fill='none' stroke='%231c1512' stroke-width='4.5' stroke-linecap='round'/><path d='M156 142 Q174 131 196 136' fill='none' stroke='%231c1512' stroke-width='4.5' stroke-linecap='round'/><ellipse cx='123' cy='151' rx='12' ry='7.5' fill='%23ffffff'/><circle cx='125' cy='151' r='5.5' fill='%231e140f'/><ellipse cx='174' cy='151' rx='12.5' ry='7.5' fill='%23ffffff'/><circle cx='172' cy='151' r='5.5' fill='%231e140f'/><path d='M147 148 L143 173 C143 178, 155 178, 156 173' fill='none' stroke='%23a6633c' stroke-width='2.5' stroke-linecap='round'/><path d='M122 194 Q148 205 180 192' fill='none' stroke='%238c4b2b' stroke-width='3' stroke-linecap='round'/></svg>" 
+                                alt="Foto Profil Dafi Pramana" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                            >
+
+                            <!-- Tombol Cepat Ganti Foto -->
+                            <div class="absolute top-3 right-3 flex items-center gap-1.5 no-print">
+                                <button 
+                                    type="button"
+                                    onclick="triggerPhotoUpload()" 
+                                    title="Ganti Foto Profil"
+                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950/80 hover:bg-indigo-600 text-white backdrop-blur-md border border-white/15 text-xs font-medium shadow-lg transition-all cursor-pointer">
+                                    <i data-lucide="camera" class="w-3.5 h-3.5 text-cyan-400"></i>
+                                    <span>Ganti Foto</span>
+                                </button>
+                                <button 
+                                    id="reset-photo-btn"
+                                    type="button"
+                                    onclick="resetSavedPhoto()" 
+                                    title="Kembalikan Foto Asli"
+                                    class="hidden p-1.5 rounded-xl bg-slate-950/80 hover:bg-rose-600 text-white backdrop-blur-md border border-white/15 text-xs shadow-lg transition-all cursor-pointer">
+                                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+
+                            <!-- Badge Overlay Bawah -->
+                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-4 text-left pointer-events-none">
+                                <div class="flex items-center gap-2 text-xs font-mono text-cyan-400">
+                                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                                    <span>SMK Negeri Ihya Ulumuddin</span>
+                                </div>
+                                <p class="text-white font-semibold text-sm mt-0.5">Teknik Komputer Jaringan</p>
+                            </div>
+                        </div>
+
+                        <!-- Kartu Floating Kecil -->
+                        <div class="hidden sm:flex items-center gap-2.5 absolute -left-6 bottom-8 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-500/15 text-indigo-500 dark:text-cyan-400 flex items-center justify-center">
+                                <i data-lucide="code-2" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-slate-500 dark:text-slate-400 block leading-none">Tujuan Karir</span>
+                                <span class="text-xs font-bold text-slate-900 dark:text-white">Programmer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Teks Perkenalan -->
+                    <div class="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-700 dark:text-cyan-300 text-xs sm:text-sm font-medium mb-6">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                            </span>
+                            <span>Siap Berkarir di Bidang Teknologi & Software Development</span>
+                        </div>
+
+                        <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4 leading-tight">
+                            Halo, Saya <br class="hidden sm:inline">
+                            <span class="bg-gradient-to-r from-indigo-500 via-cyan-400 to-sky-400 bg-clip-text text-transparent">
+                                Dafi Pramana
+                            </span>
+                        </h1>
+
+                        <!-- Efek Mengetik -->
+                        <div class="h-9 sm:h-11 flex items-center justify-center lg:justify-start mb-5">
+                            <p class="font-mono text-base sm:text-xl font-medium text-slate-700 dark:text-slate-300">
+                                &gt; <span id="typing-text" class="typing-cursor text-indigo-600 dark:text-cyan-400"></span>
+                            </p>
+                        </div>
+
+                        <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
+                            Alumni <strong class="text-slate-800 dark:text-slate-200 font-semibold">SMK Negeri Ihya Ulumuddin Singojuruh</strong> dengan keahlian inti di bidang <strong class="text-slate-800 dark:text-slate-200 font-semibold">Teknik Komputer Jaringan (TKJ)</strong> dan memiliki fokus kuat serta tujuan karir sebagai seorang <strong class="text-indigo-600 dark:text-cyan-400 font-semibold">Programmer</strong> profesional.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 no-print">
+                            <a href="#portofolio" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-semibold text-sm sm:text-base shadow-lg shadow-indigo-600/25 transition-all hover:-translate-y-0.5">
+                                <i data-lucide="folder-git-2" class="w-5 h-5"></i>
+                                <span>Lihat Portofolio</span>
+                            </a>
+                            <button onclick="window.print()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 font-semibold text-sm sm:text-base transition-all hover:-translate-y-0.5">
+                                <i data-lucide="file-down" class="w-5 h-5 text-cyan-500"></i>
+                                <span>Cetak / Simpan CV (PDF)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             3. TENTANG SAYA & BIODATA LENGKAP
+             ===================================================================== -->
+        <section id="tentang" class="py-20 bg-white dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal text-center max-w-2xl mx-auto mb-14">
+                    <span class="font-mono text-xs uppercase tracking-widest text-indigo-600 dark:text-cyan-400 font-semibold">Profil & Visi</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">Tentang Saya & Tujuan Karir</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    <!-- Kartu Biodata -->
+                    <div class="reveal lg:col-span-5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-11 h-11 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-cyan-400 flex items-center justify-center">
+                                    <i data-lucide="user-check" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Biodata Resmi CV</h3>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Informasi Kontak & Domisili</p>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-4 text-sm">
+                                <li class="flex items-start gap-3.5 pb-3.5 border-b border-slate-200/70 dark:border-slate-800">
+                                    <i data-lucide="user" class="w-4 h-4 text-cyan-500 mt-0.5 shrink-0"></i>
+                                    <div>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400 block">Nama Lengkap</span>
+                                        <span class="font-semibold text-slate-900 dark:text-white">Dafi Pramana</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3.5 pb-3.5 border-b border-slate-200/70 dark:border-slate-800">
+                                    <i data-lucide="map-pin" class="w-4 h-4 text-cyan-500 mt-0.5 shrink-0"></i>
+                                    <div>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400 block">Alamat</span>
+                                        <span class="font-medium text-slate-800 dark:text-slate-200">Dusun Krajan Desa Bedewang Kecamatan Songgon</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3.5 pb-3.5 border-b border-slate-200/70 dark:border-slate-800">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 text-cyan-500 mt-0.5 shrink-0"></i>
+                                    <div>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400 block">Pendidikan</span>
+                                        <span class="font-medium text-slate-800 dark:text-slate-200">SMK Negeri Ihya Ulumuddin Singojuruh</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3.5 pb-3.5 border-b border-slate-200/70 dark:border-slate-800">
+                                    <i data-lucide="phone" class="w-4 h-4 text-cyan-500 mt-0.5 shrink-0"></i>
+                                    <div>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400 block">Nomer Telepon</span>
+                                        <span class="font-mono font-medium text-slate-800 dark:text-slate-200">085801704869</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3.5">
+                                    <i data-lucide="mail" class="w-4 h-4 text-cyan-500 mt-0.5 shrink-0"></i>
+                                    <div>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400 block">Email</span>
+                                        <span class="font-mono font-medium text-slate-800 dark:text-slate-200">wngjw90@gmail.com</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Kartu Tujuan Karir -->
+                    <div class="reveal lg:col-span-7 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/90 text-white border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden flex flex-col justify-between">
+                        <div class="absolute -right-12 -top-12 w-56 h-56 bg-indigo-500/20 rounded-full blur-2xl pointer-events-none"></div>
+                        <div class="absolute -left-12 -bottom-12 w-56 h-56 bg-cyan-500/15 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-mono mb-5">
+                                <i data-lucide="target" class="w-3.5 h-3.5"></i>
+                                <span>TUJUAN KARIR: PROGRAMMER</span>
+                            </div>
+
+                            <h3 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4">
+                                Membangun Solusi Digital sebagai <span class="text-cyan-400">Programmer</span>
+                            </h3>
+
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-5">
+                                Berbekal latar belakang keahlian <strong class="text-white">Teknik Komputer Jaringan (TKJ)</strong> dari <strong class="text-white">SMK Negeri Ihya Ulumuddin Singojuruh</strong>, saya memiliki pemahaman yang solid mengenai arsitektur sistem, jaringan komputer, serta infrastruktur server.
+                            </p>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+                                Kombinasi keahlian teknis jaringan dan ketertarikan mendalam pada dunia pemrograman memungkinkan saya untuk merancang aplikasi web dan perangkat lunak yang andal, efisien, serta aman dari sisi klien hingga server.
+                            </p>
+                        </div>
+
+                        <!-- 3 Pilar -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                                <i data-lucide="network" class="w-5 h-5 text-indigo-400 mb-2"></i>
+                                <h4 class="font-semibold text-sm text-white">Teknik Komputer Jaringan</h4>
+                                <p class="text-xs text-slate-400 mt-1">Konfigurasi Mikrotik, LAN & Server</p>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                                <i data-lucide="code" class="w-5 h-5 text-cyan-400 mb-2"></i>
+                                <h4 class="font-semibold text-sm text-white">Programming</h4>
+                                <p class="text-xs text-slate-400 mt-1">Web Development & Scripting</p>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                                <i data-lucide="cpu" class="w-5 h-5 text-sky-400 mb-2"></i>
+                                <h4 class="font-semibold text-sm text-white">Problem Solving</h4>
+                                <p class="text-xs text-slate-400 mt-1">Analisis sistem & troubleshooting</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             4. RIWAYAT PENDIDIKAN
+             ===================================================================== -->
+        <section id="pendidikan" class="py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal text-center max-w-2xl mx-auto mb-14">
+                    <span class="font-mono text-xs uppercase tracking-widest text-indigo-600 dark:text-cyan-400 font-semibold">Latar Belakang Akademik</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">Riwayat Pendidikan</h2>
+                </div>
+
+                <div class="reveal relative pl-8 sm:pl-10 border-l-2 border-indigo-500/40 space-y-8">
+                    <div class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm hover:border-cyan-500/50 transition-colors">
+                        <div class="absolute -left-[41px] sm:-left-[49px] top-8 w-5 h-5 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-400 ring-4 ring-slate-50 dark:ring-slate-950 flex items-center justify-center">
+                            <span class="w-2 h-2 rounded-full bg-white"></span>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-cyan-300 text-xs font-mono font-semibold w-fit">
+                                <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                                Sekolah Menengah Kejuruan (SMK)
+                            </span>
+                            <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Songgon, Banyuwangi</span>
+                        </div>
+
+                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                            SMK Negeri Ihya Ulumuddin Singojuruh
+                        </h3>
+                        <p class="text-indigo-600 dark:text-cyan-400 font-medium text-sm sm:text-base mt-1">
+                            Kompetensi Keahlian: Teknik Komputer Jaringan (TKJ)
+                        </p>
+
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mt-4">
+                            Mempelajari instalasi perangkat keras komputer, perakitan PC, konfigurasi jaringan lokal (LAN) dan nirkabel (WLAN), pengelolaan router Mikrotik, administrasi sistem jaringan, serta dasar-dasar pemrograman dan logika komputasi.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-5">
+                            <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Teknik Komputer Jaringan</span>
+                            <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Administrasi Jaringan</span>
+                            <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Pemrograman Dasar</span>
+                            <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium">Troubleshooting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             5. KEAHLIAN & TEKNOLOGI
+             ===================================================================== -->
+        <section id="keahlian" class="py-20 bg-white dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal text-center max-w-2xl mx-auto mb-14">
+                    <span class="font-mono text-xs uppercase tracking-widest text-indigo-600 dark:text-cyan-400 font-semibold">Kompetensi Teknis</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">Keahlian & Teknologi</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3">
+                        Keahlian utama dalam Teknik Komputer Jaringan serta pengembangan skill sebagai Programmer.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Programming -->
+                    <div class="reveal bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
+                        <div class="flex items-center gap-3.5 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 flex items-center justify-center">
+                                <i data-lucide="terminal" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white">Programming & Web Dev</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Tujuan Karir & Pengembangan</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1.5">
+                                    <span class="text-slate-800 dark:text-slate-200">HTML5, CSS3 & Responsive Design</span>
+                                    <span class="font-mono text-cyan-600 dark:text-cyan-400">90%</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1.5">
+                                    <span class="text-slate-800 dark:text-slate-200">JavaScript & Web Interactivity</span>
+                                    <span class="font-mono text-cyan-600 dark:text-cyan-400">85%</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1.5">
+                                    <span class="text-slate-800 dark:text-slate-200">Git & GitHub Hosting (GitHub Pages)</span>
+                                    <span class="font-mono text-cyan-600 dark:text-cyan-400">88%</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full" style="width: 88%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1.5">
+                                    <span class="text-slate-800 dark:text-slate-200">Dasar Database & Backend Scripting</span>
+                                    <span class="font-mono text-cyan-600 dark:text-cyan-400">80%</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Teknik Komputer Jaringan -->
+                    <div class="reveal bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
+                        <div class="flex items-center gap-3.5 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                                <i data-lucide="server" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white">Teknik Komputer Jaringan</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Keahlian Utama SMK</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1.5">
+                                    <span class="text-slate-800 dark:text-slate-200">Konfigurasi Mikrotik RouterOS</span>
+                                    <span class="font-mono text-indigo-600 dark:text-indigo-400">92%</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full" style="width: 92%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1.5">
+                                    <span class="text-slate-800 dark:text-slate-200">Perakitan & Perawatan PC / Hardware</span>
+                                    <span class="font-mono text-indigo-600 dark:text-indigo-400">95%</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1.5">
+                                    <span class="text-slate-800 dark:text-slate-200">Administrasi Server Linux (Debian)</span>
+                                    <span class="font-mono text-indigo-600 dark:text-indigo-400">86%</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full" style="width: 86%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1.5">
+                                    <span class="text-slate-800 dark:text-slate-200">Instalasi Kabel UTP, LAN & Wi-Fi</span>
+                                    <span class="font-mono text-indigo-600 dark:text-indigo-400">90%</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             6. PORTOFOLIO PROYEK INTERAKTIF
+             ===================================================================== -->
+        <section id="portofolio" class="py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal text-center max-w-2xl mx-auto mb-10">
+                    <span class="font-mono text-xs uppercase tracking-widest text-indigo-600 dark:text-cyan-400 font-semibold">Karya & Praktik</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">Portofolio Proyek</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3">
+                        Daftar proyek web development dan konfigurasi jaringan komputer.
+                    </p>
+                </div>
+
+                <!-- Tombol Filter -->
+                <div class="reveal flex flex-wrap items-center justify-center gap-2.5 mb-10">
+                    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md shadow-indigo-600/20 transition-all">
+                        Semua Proyek
+                    </button>
+                    <button data-filter="web" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500 transition-all">
+                        Web Development
+                    </button>
+                    <button data-filter="network" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+                        Jaringan & Server
+                    </button>
+                </div>
+
+                <!-- Grid Proyek -->
+                <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"></div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             7. KONTAK INTERAKTIF
+             ===================================================================== -->
+        <section id="kontak" class="py-20 bg-white dark:bg-slate-900/50 border-t border-slate-200/80 dark:border-slate-800/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal text-center max-w-2xl mx-auto mb-14">
+                    <span class="font-mono text-xs uppercase tracking-widest text-indigo-600 dark:text-cyan-400 font-semibold">Mari Terhubung</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">Hubungi Dafi Pramana</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3">
+                        Terbuka untuk peluang karir sebagai Programmer, IT Support, maupun kolaborasi proyek teknologi.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Informasi Kontak -->
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <!-- Telp / WA -->
+                        <div class="reveal bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition-all">
+                            <div>
+                                <div class="w-11 h-11 rounded-2xl bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 flex items-center justify-center mb-4">
+                                    <i data-lucide="phone-call" class="w-5 h-5"></i>
+                                </div>
+                                <h3 class="font-heading font-bold text-base text-slate-900 dark:text-white">Nomer Telepon / WA</h3>
+                                <p class="font-mono text-sm font-semibold text-cyan-600 dark:text-cyan-400 mt-1">085801704869</p>
+                            </div>
+                            <div class="flex items-center gap-2 mt-5">
+                                <a href="https://wa.me/6285801704869?text=Halo%20Dafi%20Pramana,%20saya%20melihat%20portofolio%20Anda." target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors">
+                                    Chat WhatsApp
+                                </a>
+                                <button onclick="copyText('085801704869', 'Nomer telepon disalin!')" class="py-2.5 px-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-cyan-500 text-xs font-semibold transition-colors" title="Salin Nomer">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="reveal bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all">
+                            <div>
+                                <div class="w-11 h-11 rounded-2xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <h3 class="font-heading font-bold text-base text-slate-900 dark:text-white">Alamat Email</h3>
+                                <p class="font-mono text-sm font-semibold text-indigo-600 dark:text-indigo-400 mt-1 break-all">wngjw90@gmail.com</p>
+                            </div>
+                            <div class="flex items-center gap-2 mt-5">
+                                <a href="mailto:wngjw90@gmail.com" class="flex-1 text-center py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition-colors">
+                                    Kirim Email
+                                </a>
+                                <button onclick="copyText('wngjw90@gmail.com', 'Email disalin!')" class="py-2.5 px-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-indigo-500 text-xs font-semibold transition-colors" title="Salin Email">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Alamat Lengkap -->
+                        <div class="reveal sm:col-span-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-sky-500/50 transition-all">
+                            <div class="flex items-start gap-4">
+                                <div class="w-11 h-11 rounded-2xl bg-sky-500/15 text-sky-600 dark:text-sky-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-base text-slate-900 dark:text-white">Alamat Domisili</h3>
+                                    <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">
+                                        Dusun Krajan Desa Bedewang Kecamatan Songgon
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Desa+Bedewang+Kecamatan+Songgon" target="_blank" rel="noopener noreferrer" class="shrink-0 text-center py-2.5 px-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-sky-500 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors">
+                                Buka Peta
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Form Pesan Cepat -->
+                    <div class="reveal lg:col-span-5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
+                        <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-1">Kirim Pesan Langsung</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-5">Pesan akan diteruskan langsung ke WhatsApp Dafi Pramana.</p>
+                        
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="sender-name" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">Nama Anda / Perusahaan</label>
+                                <input type="text" id="sender-name" required placeholder="Contoh: Ahmad Fauzi" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                            </div>
+                            <div>
+                                <label for="sender-message" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">Pesan / Keperluan</label>
+                                <textarea id="sender-message" rows="3" required placeholder="Halo Dafi, saya ingin menawarkan posisi..." class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white text-sm font-semibold shadow-md shadow-indigo-600/20 transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                <span>Kirim Pesan via WhatsApp</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         8. FOOTER
+         ===================================================================== -->
+    <footer class="py-8 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+                &copy; <span id="current-year"></span> <strong class="text-slate-900 dark:text-white">Dafi Pramana</strong>. Alumni SMK Negeri Ihya Ulumuddin Singojuruh.
+            </p>
+            <p class="font-mono text-xs text-slate-500 mt-1">
+                Teknik Komputer Jaringan &bull; Programmer
+            </p>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         9. MODAL DETAIL PROYEK & TOAST
+         ===================================================================== -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+            <button id="close-modal-btn" aria-label="Tutup Detail" class="absolute top-5 right-5 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-rose-500 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <span id="modal-category" class="inline-block px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-cyan-400 text-xs font-mono font-semibold mb-3"></span>
+            <h3 id="modal-title" class="font-heading text-2xl font-bold text-slate-900 dark:text-white mb-3"></h3>
+            <p id="modal-desc" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5"></p>
+            <div class="mb-6">
+                <h4 class="text-xs font-mono uppercase tracking-wider text-slate-500 mb-2">Teknologi Terkait:</h4>
+                <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+            </div>
+            <button onclick="closeModal()" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white text-sm font-semibold transition-colors">
+                Tutup Detail
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notifikasi -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-slate-900 dark:bg-indigo-600 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 text-sm font-medium border border-white/10">
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400 dark:text-white"></i>
+        <span id="toast-message">Berhasil!</span>
+    </div>
+
+    <!-- =====================================================================
+         10. JAVASCRIPT
+         ===================================================================== -->
+    <script>
+        lucide.createIcons();
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Foto Profil Handler
+        const photoInput = document.getElementById('photo-upload-input');
+        const profileImg = document.getElementById('profile-photo-img');
+        const resetPhotoBtn = document.getElementById('reset-photo-btn');
+        const STORAGE_KEY = 'dafi_pramana_custom_photo';
+        const defaultSvgData = profileImg.src;
+
+        function triggerPhotoUpload() {
+            photoInput.click();
+        }
+
+        function resetSavedPhoto() {
+            try {
+                localStorage.removeItem(STORAGE_KEY);
+            } catch (e) {}
+            profileImg.src = defaultSvgData;
+            resetPhotoBtn.classList.add('hidden');
+            showToast('Foto dikembalikan ke default');
+        }
+
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                profileImg.src = saved;
+                resetPhotoBtn.classList.remove('hidden');
+            }
+        } catch (e) {}
+
+        photoInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const res = evt.target.result;
+                profileImg.src = res;
+                resetPhotoBtn.classList.remove('hidden');
+                try {
+                    localStorage.setItem(STORAGE_KEY, res);
+                } catch (err) {}
+                showToast('Foto profil berhasil diperbarui!');
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Theme Toggle
+        const themeBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const html = document.documentElement;
+
+        function updateTheme() {
+            if (html.classList.contains('dark')) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+        updateTheme();
+
+        themeBtn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            updateTheme();
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOpen = document.getElementById('menu-open-icon');
+        const menuClose = document.getElementById('menu-close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const hidden = mobileMenu.classList.toggle('hidden');
+            menuOpen.classList.toggle('hidden', !hidden);
+            menuClose.classList.toggle('hidden', hidden);
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(l => {
+            l.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuOpen.classList.remove('hidden');
+                menuClose.classList.add('hidden');
+            });
+        });
+
+        // Typing Effect
+        const roles = [
+            "Programmer",
+            "Network Engineer (TKJ)",
+            "Web Developer",
+            "Alumni SMK Negeri Ihya Ulumuddin"
+        ];
+        let roleIdx = 0, charIdx = 0, isDel = false;
+        const typingEl = document.getElementById('typing-text');
+
+        function typeWriter() {
+            const current = roles[roleIdx];
+            if (isDel) {
+                typingEl.textContent = current.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typingEl.textContent = current.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let spd = isDel ? 40 : 80;
+            if (!isDel && charIdx === current.length) {
+                spd = 1600;
+                isDel = true;
+            } else if (isDel && charIdx === 0) {
+                isDel = false;
+                roleIdx = (roleIdx + 1) % roles.length;
+                spd = 300;
+            }
+            setTimeout(typeWriter, spd);
+        }
+        typeWriter();
+
+        // Portfolio Data
+        const portfolioData = [
+            {
+                id: 1,
+                category: 'web',
+                categoryLabel: 'Web Development',
+                title: 'Website Portofolio & CV Profesional (GitHub Pages)',
+                summary: 'Website CV responsif dengan mode gelap/terang, efek mengetik, dan siap cetak PDF.',
+                details: 'Dibangun dengan HTML5 dan Tailwind CSS untuk performa tinggi dan siap diunggah langsung ke GitHub Hosting.',
+                tags: ['HTML5', 'Tailwind CSS', 'JavaScript', 'GitHub Pages'],
+                icon: 'layout'
+            },
+            {
+                id: 2,
+                category: 'web',
+                categoryLabel: 'Web Development',
+                title: 'Kalkulator Subnetting IPv4 Interaktif',
+                summary: 'Aplikasi web untuk menghitung Network ID, Broadcast, dan rentang Host IP secara otomatis.',
+                details: 'Menggabungkan logika JavaScript dengan ilmu jaringan komputer untuk mempercepat perhitungan subnet.',
+                tags: ['JavaScript', 'Algoritma', 'Networking'],
+                icon: 'calculator'
+            },
+            {
+                id: 3,
+                category: 'network',
+                categoryLabel: 'Jaringan & Server',
+                title: 'Konfigurasi Router Gateway & Hotspot Mikrotik',
+                summary: 'Manajemen bandwidth, firewall, dan portal login voucher Wi-Fi menggunakan RouterOS.',
+                details: 'Konfigurasi LAN/WLAN, DHCP Server, Simple Queue, NAT, serta kustomisasi halaman login.',
+                tags: ['Mikrotik RouterOS', 'Winbox', 'TCP/IP', 'Firewall'],
+                icon: 'router'
+            },
+            {
+                id: 4,
+                category: 'network',
+                categoryLabel: 'Jaringan & Server',
+                title: 'Administrasi Web & DNS Server Linux Debian',
+                summary: 'Membangun layanan server lokal untuk hosting website dan manajemen domain.',
+                details: 'Instalasi Bind9 DNS Server, Apache2 Web Server, serta remote administration via SSH.',
+                tags: ['Linux Debian', 'Apache2', 'Bind9 DNS', 'SSH'],
+                icon: 'server'
+            }
+        ];
+
+        const grid = document.getElementById('portfolio-grid');
+
+        function renderPortfolio(filter = 'all') {
+            grid.innerHTML = '';
+            const filtered = filter === 'all' ? portfolioData : portfolioData.filter(i => i.category === filter);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:border-cyan-500/50 transition-all flex flex-col justify-between group';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold ${item.category === 'web' ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400' : 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400'}">
+                                ${item.categoryLabel}
+                            </span>
+                            <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:text-cyan-400 transition-colors">
+                                <i data-lucide="${item.icon}" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-cyan-400 transition-colors">
+                            ${item.title}
+                        </h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
+                            ${item.summary}
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            ${item.tags.map(t => `<span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 text-[11px] font-mono">${t}</span>`).join('')}
+                        </div>
+                        <button onclick="openModal(${item.id})" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-indigo-600 dark:bg-slate-800 dark:hover:bg-indigo-600 text-slate-800 hover:text-white dark:text-slate-200 text-xs font-semibold transition-colors flex items-center justify-center gap-2">
+                            <span>Lihat Detail Proyek</span>
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+        renderPortfolio();
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('bg-gradient-to-r', 'from-indigo-600', 'to-cyan-600', 'text-white', 'shadow-md');
+                    b.classList.add('bg-white', 'dark:bg-slate-900', 'text-slate-600', 'dark:text-slate-300');
+                });
+                btn.classList.remove('bg-white', 'dark:bg-slate-900', 'text-slate-600', 'dark:text-slate-300');
+                btn.classList.add('bg-gradient-to-r', 'from-indigo-600', 'to-cyan-600', 'text-white', 'shadow-md');
+                renderPortfolio(btn.dataset.filter);
+            });
+        });
+
+        // Modal Handler
+        const modal = document.getElementById('project-modal');
+        function openModal(id) {
+            const p = portfolioData.find(item => item.id === id);
+            if (!p) return;
+            document.getElementById('modal-category').textContent = p.categoryLabel;
+            document.getElementById('modal-title').textContent = p.title;
+            document.getElementById('modal-desc').textContent = p.details;
+            document.getElementById('modal-tags').innerHTML = p.tags.map(t => `<span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-mono">${t}</span>`).join('');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+        document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Toast & Copy
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            t.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => t.classList.add('translate-y-20', 'opacity-0'), 2800);
+        }
+
+        function copyText(text, msg) {
+            const inp = document.createElement('input');
+            inp.value = text;
+            document.body.appendChild(inp);
+            inp.select();
+            document.execCommand('copy');
+            document.body.removeChild(inp);
+            showToast(msg);
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('sender-name').value.trim();
+            const msg = document.getElementById('sender-message').value.trim();
+            const url = `https://wa.me/6285801704869?text=` + encodeURIComponent(`Halo Dafi Pramana, saya *${name}*.\n\n${msg}`);
+            window.open(url, '_blank', 'noopener,noreferrer');
+        });
+
+        // Scroll Observer
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+</body>
+</html>
